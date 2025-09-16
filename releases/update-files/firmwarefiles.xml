@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<firmwareVersions>
+	
+	<!--Blue2-D-->
+	<hardware version="003">
+		<firmware version="1.01">
+			<filename>app_Blue2-D_101.gbl</filename>
+		</firmware>
+	</hardware>
+	
+	<hardware version="005">
+		<firmware version="1.01">
+			<filename>app_Blue2-D_101.gbl</filename>
+		</firmware>
+	</hardware>
+
+	<!--Blue2-DIR-->
+	<hardware version="004">
+		<firmware version="1.06">
+			<filename>app_Blue2-DIR_106.gbl</filename>
+		</firmware>
+	</hardware>
+	
+	<hardware version="006">
+		<firmware version="1.06">
+			<filename>app_Blue2-DIR_106.gbl</filename>
+		</firmware>
+	</hardware>
+	
+	<!--McDonalds MFT (Standard)-->
+	<hardware version="007">			
+		<firmware version="MTF 4.02">
+			<filename>app_Blue2-MFT_402.gbl</filename>
+		</firmware>		
+	</hardware>
+	
+	<hardware version="010">			
+		<firmware version="MTF 4.02">
+			<filename>app_Blue2-MFT_402.gbl</filename>
+		</firmware>		
+	</hardware>
+
+	<!--McDonalds MFT (Japan)-->
+	<hardware version="008">			
+		<firmware version="MFT Japan 2.12">
+			<filename>app_Blue2-MFT_212.gbl</filename>
+		</firmware>		
+	</hardware>
+
+	<!--General Release MFT-->
+	<hardware version="009">
+		<firmware version="Blue2-MFT 3.06">
+			<filename>app_Blue2-MFT_306.gbl</filename>
+		</firmware>		
+	</hardware>
+
+</firmwareVersions>

@@ -1,0 +1,25 @@
+The major version numbers describe the feature set and the minor version numbers are revisions within that “path.”  To wit: 1.x (now deprecated) had features specific for McDonalds Global, 2.x has features for McD Japan, 3.x has features for the general market, and 4.x has features specifically for McD UK, but which have since been adopted by McD Global.
+
+1.x
+•	2019-04-16, 1.00, Initial release
+•	2019-07-17, 1.12, Enhancements: Adjust ambient temperature compensation to work down to -20C (was 0C).  Bug fixes: Address a potential device lockup if the user presses and holds the bottom button for five seconds while the device is off.  Fix rounding error.
+Now deprecated.  Firmware updates redirect to the 4.x path.
+ 
+2.x
+•	2019-07-17, 2.00, Initial release
+•	2020-02-18, 2.10, Enhancements: Increase read rate from once per second to 5x per second to match McD UK (basically merged with 4.00 initial release)
+•	2020-11-09, 2.12, Enhancements: Remove MAC from display when not advertising (customer request).  Bug fixes: Fix memory reads/writes to ensure the integrity of the following values: firmware version, hardware version, serial number, device name, calibration offset & gain.  Adjust internal timing to account for ADC part variances.
+ 
+3.x
+•	2019-08-09, 3.00, Initial release candidate.  Only rolled out to select customers.
+•	2019-08-13, 3.02, Initial official release.  Bug fixes: Adjust display text alignment.
+•	2019-12-19, 3.03, Enhancements: Add temperature service UUID to scan response packet
+•	2020-11-09, 3.05, Bug fixes: Fix memory reads/writes to ensure the integrity of the following values: firmware version, hardware version, serial number, device name, calibration offset & gain.  Adjust internal timing to account for ADC part variances.
+•	2022-06-17, 3.06, Bug fixes: Adjust memory write routine to address write failures in production.
+ 
+4.x
+•	2020-01-07, 4.00, Initial release
+•	2020-11-09, 4.02, Bug fixes: Fix memory reads/writes to ensure the integrity of the following values: firmware version, hardware version, serial number, device name, calibration offset & gain. Adjust internal timing to account for ADC part variances.
+
+Programming Scripts
+•	2025-08-01, Updated programming scripts to lock down debug interface after programming.

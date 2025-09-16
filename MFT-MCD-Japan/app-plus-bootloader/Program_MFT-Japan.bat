@@ -1,0 +1,81 @@
+@ECHO OFF
+
+::For development PC
+SET COMMANDER="C:\SiliconLabs\SimplicityStudio\v4\developer\adapter_packs\commander\commander"
+
+::For production PC
+::SET COMMANDER="C:\Program Files (x86)\SEGGER\Commander_win32_0v25p3b281\Simplicity Commander\commander"
+
+::For Eben
+::SET COMMANDER="C:\Program Files (x86)\SEGGER\Commander_win32_1v7p7b561\Simplicity Commander\commander"
+
+
+:: For Development
+SET BL_STACK_APP="MFT-MCD-Japan.s37"
+
+:: For Production
+::SET BL_STACK_APP="09-985D.s37"
+
+
+
+SET DEVICE=EFR32BG1B232F256GM56
+SET ENCRYPTION_KEY="..\..\keys\app-encrypt-key.txt"
+SET SIGNING_KEY="..\..\keys\signing-key-tokens.txt"
+
+ECHO Unlocking device
+ECHO.
+
+CALL %COMMANDER% device lock --debug disable --device %DEVICE%
+
+SET EXIT_CODE=%ERRORLEVEL% 
+IF %EXIT_CODE% NEQ 0 (  
+    ECHO Error unlocking debug interface, return code = %EXIT_CODE%
+	PAUSE
+    GOTO:eof
+)
+
+ECHO Successfully unlocked device
+ECHO.
+
+ECHO Programming MFT with combined app, stack, and bootloader...
+ECHO.
+
+CALL %COMMANDER% flash %BL_STACK_APP% --device %DEVICE% --masserase
+
+SET EXIT_CODE=%ERRORLEVEL%
+IF %EXIT_CODE% NEQ 0 (  
+    ECHO Error programming MFT, return code = %EXIT_CODE%
+	PAUSE
+    GOTO:eof
+)
+
+ECHO Done programming MFT.
+ECHO.
+ECHO Flashing encryption and signing keys to MFT...
+
+CALL %COMMANDER% flash --device %DEVICE% --tokengroup znet --tokenfile %ENCRYPTION_KEY% --tokenfile %SIGNING_KEY%
+
+SET EXIT_CODE=%ERRORLEVEL%
+IF %EXIT_CODE% NEQ 0 (  
+    ECHO Error flashing keys to MFT, return code = %EXIT_CODE%
+	PAUSE
+    GOTO:eof
+)
+
+ECHO Done flashing keys to MFT.
+ECHO.
+ECHO Locking debug interface
+
+CALL %COMMANDER% device lock --debug enable --device %DEVICE%
+
+SET EXIT_CODE=%ERRORLEVEL% 
+IF %EXIT_CODE% NEQ 0 (  
+    ECHO Error locking debug interface, return code = %EXIT_CODE%
+	PAUSE
+    GOTO:eof
+)
+
+ECHO !!!SUCCESS!!!
+ECHO.
+
+PAUSE

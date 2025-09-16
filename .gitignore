@@ -1,0 +1,40 @@
+# Compiled Object Files and Libraries
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.d
+*.i
+
+# Executables
+*.s37
+*.out
+*.bin
+*.hex
+*.ebl
+*.gbl
+
+# Build Directories
+build/
+bin/
+obj/
+IAR ARM*/
+
+# Temporary Files
+*~
+*.bak
+*.swp
+*.tmp
+*.log
+
+# Keys
+keys/
+app-encrypt-key.txt
+app-sign-key.pem
+signing-key-tokens.txt
+
+# Other
+archive/
+!releases/**

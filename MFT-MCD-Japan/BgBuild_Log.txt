@@ -1,0 +1,33 @@
+// Copyright 2025 Silicon Laboratories, Inc.
+//
+//
+
+Executing: bgbuild.exe (C:\SiliconLabs\SimplicityStudio\v4\developer\sdks\gecko_sdk_suite\v1.1\protocol\bluetooth_2.4\bin\bgbuild.exe)
+Standard output
+ALL OK
+
+Error/Warning output
+Warning: XML node for service 1801 is ignored. A Generic Attribute Service will be automatically generated at the beginning of the GATT database.
+WARNING: 6435952a982e47619eaabbb072119496 length attribute is 6 but actual value length is 7. 6 will be used.
+WARNING: 6435d55b982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64357bbe982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64352455982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 6435168a982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64353d6c982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 6435d272982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 6435fa3e982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64354762982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64357532982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 6435d7d5982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 6435f011982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: fe50b19851374b83a2666181e088d395 length attribute is 5 but actual value length is 6. 5 will be used.
+WARNING: 4134a840cbfa455aa3a96b78cc64dc72 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 7d53f0b733aa493998c639fcd1fa9b06 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: c717cbae241c48569829a26351bae626 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 675862059cde4b5ca56557197e3b7319 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 00eac458637e4055886037733af65548 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: fb441c3a87fc477d9f537f1c53f0bb03 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64353e70982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+WARNING: 64352456982e47619eaabbb072119496 length attribute is 1 but actual value length is 2. 1 will be used.
+
+

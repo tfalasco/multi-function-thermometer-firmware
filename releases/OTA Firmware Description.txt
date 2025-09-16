@@ -1,0 +1,23 @@
+The Multi-Function Thermometer (MFT) supports over-the-air (OTA) firmware updates when paired with the Blue2 Reader app for iOS or Android.
+
+The MFT can be put into bootloader mode by means of the Silcon Labs OTA Control Characteristic F7BF3564-FB6D-4E53-88A4-5E37E0326063.
+
+This causes the MFT to reboot with the device firmware update flag set.  
+
+Upon reboot, the MFT will enter device firmware update mode wherein it advertises as connectable and exposes the OTA Update Data Characteristic 984227f3-34fc-4045-a5d0-2c581f81a153.
+
+The Blue2 Reader app connects with the MFT in device firmware update mode where the only available functionality to is send firmware to the device or reboot.
+
+The user of the Blue2 Reader app can select the latest firmware available from https://www.cooper-atkinsupdates.com and send it to the connected MFT.
+
+Once the entire firmware update file has been sent to the MFT, the Blue2 Reader app sends a reboot command to the MFT with the device firmware update flag cleared.
+
+Upon reboot, the MFT checks for a valid firmware file.  To be valid, the firmware file must:
+  1. Be signed by Copeland's private signing key.
+  2. Be decryptable with the same symmetric key used by Copeland to encrypt MFT firmware files.
+  
+These two conditions ensure the firmware is authentic Copeland firmware, and that the files have not been tampered with on-the-fly.
+
+If the bootloader can validate that the firmware is an authentic Copeland firmware and has not been tampered with, it will boot into the new firmware.
+
+If the bootloader cannot validate that the firmware is authentic or if it detects that the firmware has been tampered with, it will boot into device firmware update mode and wait for a new firmware file to be loaded.

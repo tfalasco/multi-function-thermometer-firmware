@@ -1,0 +1,336 @@
+#ISD afv6
+# Simplicity Studio version: 5.0.0.201811140904-1361
+
+# Application configuration
+stackId: com.silabs.sdk.stack.super
+stackRoot: C:\SiliconLabs\SimplicityStudio\v4\developer\sdks\gecko_sdk_suite\v1.1
+appId: ble
+frameworkRoot: app\bluetooth_2.4\appbuilder\fwk
+architecture: efr32~family[B]~series[1]~device_configuration[1]~performance[B]~radio[232]~flash[256K]~temp[G]~package[M]~pins[56]~!module+none+iar
+deviceName: Knight
+sourceSampleAppId: soc-empty
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+
+# UI customization
+hiddenLayoutElements: plugins,callbacks
+
+# Plugin configuration
+appPlugin: bg_stack=true
+appPlugin: bgapi=true
+appPlugin: cmsis=true
+appPlugin: codegen_0=false
+appPlugin: command_interpreter=false
+appPlugin: command_interpreter_handler=false
+appPlugin: crc16_ccitt=false
+appPlugin: device=true
+appPlugin: emdrv=true
+appPlugin: emlib=true
+appPlugin: gecko_bootloader=true
+appPlugin: glib=false
+appPlugin: kit=false
+appPlugin: kit_board=true
+appPlugin: kit_flashpwr=true
+appPlugin: kit_ioexpander=false
+appPlugin: kit_lcd=false
+appPlugin: legacy_ble_ota_bootloader=false
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: mpsi_ble_transport_server=false
+appPlugin: rail=true
+appPlugin: serial_vcom=false
+appPlugin: slot-manager=false
+appPlugin: stack_bridge=false
+appPlugin: thunderboard_sense_drivers=false
+appPlugin: uartdrv=false
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(PROJECT_RELATIVE):src/InitDevice.c
+PATH(PROJECT_RELATIVE):main.c
+PATH(ABSOLUTE):C:\SiliconLabs\SimplicityStudio\v4
+}
+{setupId:bleGattConfigurator
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <gatt generic_attribute_service="true" header="gatt_db.h" name="Blue2-DXX" out="gatt_db.c" prefix="gattdb_">
+    <capabilities_declare>
+      <capability enable="true">Default</capability>
+      <capability enable="true">Legacy_Blue2</capability>
+      <capability enable="false">Infrared</capability>
+      <capability enable="true">Sound</capability>
+      <capability enable="false">Rits</capability>
+      <capability enable="false">Adjust_Display</capability>
+    </capabilities_declare>
+    <service advertise="false" id="generic_attribute" name="Generic Attribute" requirement="mandatory" sourceId="org.bluetooth.service.generic_attribute" type="primary" uuid="1801">
+      <informativeText/>
+      <characteristic id="service_changed" name="Service Changed" sourceId="org.bluetooth.characteristic.gatt.service_changed" uuid="2A05">
+        <informativeText/>
+        <value length="4" type="hex" variable_length="false"/>
+        <properties indicate="true" indicate_requirement="mandatory" notify="false" notify_requirement="excluded" read="false" read_requirement="excluded" reliable_write="false" reliable_write_requirement="excluded" write="false" write_no_response="false" write_no_response_requirement="excluded" write_requirement="excluded"/>
+        <descriptor id="client_characteristic_configuration" name="Client Characteristic Configuration" sourceId="org.bluetooth.descriptor.gatt.client_characteristic_configuration" uuid="2902">
+          <properties discoverable="true" discoverable_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+          <value length="2" type="hex" variable_length="false"/>
+        </descriptor>
+      </characteristic>
+    </service>
+    <service advertise="false" id="generic_access" name="Generic Access" requirement="mandatory" sourceId="org.bluetooth.service.generic_access" type="primary" uuid="1800">
+      <informativeText>Abstract:  The generic_access service contains generic information about the device. All available Characteristics are readonly.  </informativeText>
+      <characteristic id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
+        <informativeText/>
+        <value length="9" type="utf-8" variable_length="true">Blue2-MFT</value>
+        <properties read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="appearance" name="Appearance" sourceId="org.bluetooth.characteristic.gap.appearance" uuid="2A01">
+        <informativeText>Abstract:  The external appearance of this device. The values are composed of a category (10-bits) and sub-categories (6-bits).  </informativeText>
+        <value length="2" type="hex" variable_length="false">0300</value>
+        <properties indicate="false" indicate_requirement="excluded" notify="false" notify_requirement="excluded" read="true" read_requirement="mandatory" reliable_write="false" reliable_write_requirement="excluded" write="false" write_no_response="false" write_no_response_requirement="excluded" write_requirement="excluded"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Device Information" requirement="mandatory" sourceId="org.bluetooth.service.device_information" type="primary" uuid="180A">
+      <informativeText>Abstract: The Device Information Service exposes manufacturer and/or vendor information about a device. Summary: This service exposes manufacturer information about a device. The Device Information Service is instantiated as a Primary Service. Only one instance of the Device Information Service is exposed on a device. </informativeText>
+      <characteristic name="Manufacturer Name String" sourceId="org.bluetooth.characteristic.manufacturer_name_string" uuid="2A29">
+        <informativeText>Abstract: The value of this characteristic is a UTF-8 string representing the name of the manufacturer of the device. </informativeText>
+        <value length="19" type="utf-8" variable_length="false">Cooper-Atkins Corp.</value>
+        <properties const="true" const_requirement="optional" read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic name="Model Number String" sourceId="org.bluetooth.characteristic.model_number_string" uuid="2A24">
+        <informativeText>Abstract: The value of this characteristic is a UTF-8 string representing the model number assigned by the device vendor. </informativeText>
+        <value length="5" type="utf-8" variable_length="false">BTW-3</value>
+        <properties const="true" const_requirement="optional" read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="firmware_revision_string" name="Firmware Revision String" sourceId="org.bluetooth.characteristic.firmware_revision_string" uuid="2A26">
+        <informativeText>Summary:  The value of this characteristic is a UTF-8 string representing the firmware revision for the firmware within the device.  </informativeText>
+        <value length="4" type="utf-8" variable_length="false">0.00</value>
+        <properties read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="hardware_revision_string" name="Hardware Revision String" sourceId="org.bluetooth.characteristic.hardware_revision_string" uuid="2A27">
+        <informativeText>Summary:  The value of this characteristic is a UTF-8 string representing the hardware revision for the hardware within the device.  </informativeText>
+        <value length="3" type="utf-8" variable_length="false">000</value>
+        <properties read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="serial_number_string" name="Serial Number String" sourceId="org.bluetooth.characteristic.serial_number_string" uuid="2A25">
+        <informativeText>Abstract:  The value of this characteristic is a variable-length UTF-8 string representing the serial number for a particular instance of the device.  </informativeText>
+        <value length="12" type="utf-8" variable_length="false">XXXXXXXXXXXX</value>
+        <properties read="true" read_requirement="mandatory"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Silicon Labs OTA" requirement="mandatory" sourceId="com.silabs.service.ota" type="primary" uuid="1D14D6EE-FD63-4FA1-BFA4-8F47B42119F0">
+      <informativeText>Abstract: The Silicon Labs OTA Service enables over-the-air firmware update of the device. </informativeText>
+      <characteristic id="ota_control" name="Silicon Labs OTA Control" sourceId="com.silabs.characteristic.ota_control" uuid="F7BF3564-FB6D-4E53-88A4-5E37E0326063">
+        <informativeText>Abstract: Silicon Labs OTA Control. </informativeText>
+        <value length="1" type="user" variable_length="false"/>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" id="battery_service" name="Battery Service" requirement="mandatory" sourceId="org.bluetooth.service.battery_service" type="primary" uuid="180F">
+      <informativeText>Abstract:  The Battery Service exposes the state of a battery within a device.  Summary:  The Battery Service exposes the Battery State and Battery Level of a single battery or set of batteries in a device.  </informativeText>
+      <characteristic id="battery_level" name="Battery Level" sourceId="org.bluetooth.characteristic.battery_level" uuid="2A19">
+        <informativeText>Abstract:  The current charge level of a battery. 100% represents fully charged while 0% represents fully discharged.  </informativeText>
+        <value length="1" type="hex" variable_length="false"/>
+        <properties indicate="false" indicate_requirement="excluded" notify="false" notify_requirement="optional" read="true" read_requirement="mandatory" write="false" write_no_response="false" write_no_response_requirement="excluded" write_requirement="excluded"/>
+        <descriptor id="characteristic_presentation_format" name="Characteristic Presentation Format" sourceId="org.bluetooth.descriptor.gatt.characteristic_presentation_format" uuid="2904">
+          <properties discoverable="false" discoverable_requirement="excluded" read="true" read_requirement="mandatory" write="false" write_requirement="excluded"/>
+          <value length="7" type="hex" variable_length="false"/>
+        </descriptor>
+        <descriptor id="client_characteristic_configuration" name="Client Characteristic Configuration" sourceId="org.bluetooth.descriptor.gatt.client_characteristic_configuration" uuid="2902">
+          <properties discoverable="true" discoverable_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+          <value length="2" type="hex" variable_length="false"/>
+        </descriptor>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Blue2-DXX Temperature Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="6435908B982E47619EAABBB072119496">
+      <informativeText>Custom service</informativeText>
+      <characteristic id="temperature_reading_characteristic" name="Blue2-DXX Temperature Reading" sourceId="custom.type" uuid="6435952A982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="6" type="hex" variable_length="false">0x000000000000</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Blue2-DXX Configuration Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="64354DDF982E47619EAABBB072119496">
+      <informativeText>Custom service</informativeText>
+      <characteristic id="auto_sleep_interval_characteristic" name="Auto Sleep Interval" sourceId="custom.type" uuid="6435D55B982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="sleep_time_characteristic" name="Sleep Time" sourceId="custom.type" uuid="64357BBE982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x05</value>
+        <properties read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="reset_sleep_timer_characteristic" name="Reset Sleep Timer" sourceId="custom.type" uuid="64352455982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="force_sleep_characteristic" name="Force Sleep" sourceId="custom.type" uuid="6435168A982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="disconnect_characteristic" name="Disconnect" sourceId="custom.type" uuid="64353D6C982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="display_scale_characteristic" name="Display Scale" sourceId="custom.type" uuid="6435D272982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="measurement_interval_characteristic" name="Measurement Interval" sourceId="custom.type" uuid="6435FA3E982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x01</value>
+        <properties read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="thermometer_mode_characteristic" name="Thermometer Mode" sourceId="custom.type" uuid="64354762982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <capabilities>
+          <capability>Infrared</capability>
+        </capabilities>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="emissivity_characteristic" name="Emissivity" sourceId="custom.type" uuid="6435849E982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <capabilities>
+          <capability>Infrared</capability>
+        </capabilities>
+        <value length="1" type="user" variable_length="false">0x00</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="begin_calibration_characteristic" name="Begin Calibration" sourceId="custom.type" uuid="64357532982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="laser_characteristic" name="Laser" sourceId="custom.type" uuid="6435D7D5982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <capabilities>
+          <capability>Infrared</capability>
+        </capabilities>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="mandatory"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Blue2-DXX Sound Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="64352C9F-982E-4761-9EAA-BBB072119496">
+      <informativeText>Custom service</informativeText>
+      <capabilities>
+        <capability>Sound</capability>
+      </capabilities>
+      <characteristic id="play_sound_characteristic" name="Play Sound" sourceId="custom.type" uuid="6435F011-982E-4761-9EAA-BBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Legacy Temperature Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="f2b32c77-ea68-464b-9cd7-a22cbffb98bd">
+      <informativeText>Custom service</informativeText>
+      <capabilities>
+        <capability>Legacy_Blue2</capability>
+      </capabilities>
+      <characteristic id="legacy_temperature_as_ascii" name="Legacy Temperature As ASCII" sourceId="custom.type" uuid="78544003-4394-4fc2-8cfd-be6a00aa701b">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="10" type="utf-8" variable_length="true"/>
+        <properties indicate="true" indicate_requirement="mandatory" read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="legacy_temperature_as_float" name="Legacy Temperature As Float" sourceId="custom.type" uuid="fe50b198-5137-4b83-a266-6181e088d395">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="5" type="hex" variable_length="false">0x0000000000</value>
+        <properties indicate="true" indicate_requirement="optional" read="true" read_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_measurement_scale" name="Legacy Measurement Scale" sourceId="custom.type" uuid="28ef0770-3640-4565-a99b-d07cf6a9103f">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="utf-8" variable_length="false">C</value>
+        <properties indicate="true" indicate_requirement="mandatory" read="true" read_requirement="mandatory" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_measurement_timing" name="Legacy Measurement Timing" sourceId="custom.type" uuid="4134a840-cbfa-455a-a3a9-6b78cc64dc72">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_auto_off_interval" name="Legacy Auto-Off Interval" sourceId="custom.type" uuid="7d53f0b7-33aa-4939-98c6-39fcd1fa9b06">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_disconnect_peripheral" name="Legacy Disconnect Peripheral" sourceId="custom.type" uuid="c717cbae-241c-4856-9829-a26351bae626">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_reset_auto_off" name="Legacy Reset Auto-Off" sourceId="custom.type" uuid="67586205-9cde-4b5c-a565-57197e3b7319">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_force_sleep" name="Legacy Force Sleep" sourceId="custom.type" uuid="00eac458-637e-4055-8860-37733af65548">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_sleep_time" name="Legacy Sleep Time" sourceId="custom.type" uuid="fb441c3a-87fc-477d-9f53-7f1c53f0bb03">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="legacy_custom_probe_description" name="Legacy Custom Probe Description" sourceId="custom.type" uuid="aa40faaa-8674-4b6f-8bda-f1d2a05fc081">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="20" type="utf-8" variable_length="true"/>
+        <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="RITS Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="643533F2-982E-4761-9EAA-BBB072119496">
+      <informativeText>Custom service</informativeText>
+      <capabilities>
+        <capability>Rits</capability>
+      </capabilities>
+      <characteristic id="rits_not_okay_to_record_characteristic" name="RITS Not Okay To Record" sourceId="custom.type" uuid="64353E70-982E-4761-9EAA-BBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties notify="true" notify_requirement="mandatory" read="true" read_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="rits_unlock_characteristic" name="RITS Unlock" sourceId="custom.type" uuid="64352456-982E-4761-9EAA-BBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties write="true" write_requirement="mandatory"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Display Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="6435D000982E47619EAABBB072119496">
+      <informativeText>Custom service</informativeText>
+      <capabilities>
+        <capability>Adjust_Display</capability>
+      </capabilities>
+      <characteristic id="vertical_offset" name="Vertical" sourceId="custom.type" uuid="6435D001982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="mandatory" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic id="horizontal_offset" name="Horizontal" sourceId="custom.type" uuid="6435D002982E47619EAABBB072119496">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="mandatory" write="true" write_requirement="optional"/>
+      </characteristic>
+    </service>
+  </gatt>
+</project>
+}
+{setupId:callbackConfiguration
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+lastHwConfFileUsed=PATH(ISC_RELATIVE):efr32bg1b232f256gm56.hwconf
+}
+{setupId:macros
+}
+{setupId:mpsi
+- mappings
+- custom messages
+}
+{setupId:quizz
+}
+
+# Plugin options

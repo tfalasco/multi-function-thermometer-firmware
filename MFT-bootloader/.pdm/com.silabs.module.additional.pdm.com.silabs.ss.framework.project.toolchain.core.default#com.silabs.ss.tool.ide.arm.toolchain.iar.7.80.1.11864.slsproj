@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="com.silabs.module.additional.pdm.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.iar:7.80.1.11864" partCompatibility=".*efr32.*" toolchainCompatibility="com.silabs.ide.si32.iar com.silabs.ide.si32.gcc" sdkCompatibility="" propertyScope="project" contentRoot=".">
+  <folder name="CMSIS" partCompatibility=".*efr32.*">
+    <file name="system_efr32bg1b.c" partCompatibility=".*efr32.*" uri="studio:/sdk//platform/Device/SiliconLabs/EFR32BG1B/Source/system_efr32bg1b.c"/>
+  </folder>
+  <file name="bootloader-slot-configuration.h" uri="studio:/project/bootloader-slot-configuration.h"/>
+  <file name="bootloader-callbacks.h" uri="studio:/project/bootloader-callbacks.h"/>
+  <file name="bootloader-callback-stubs.c" uri="studio:/project/bootloader-callback-stubs.c"/>
+  <file name="bootloader-callbacks.c" uri="studio:/project/bootloader-callbacks.c"/>
+  <file name="bootloader-configuration.h" uri="studio:/project/bootloader-configuration.h"/>
+  <file name="MFT-bootloader_efr32.eww" uri="studio:/project/MFT-bootloader_efr32.eww"/>
+  <file name="MFT-bootloader_efr32.ewd" uri="studio:/project/MFT-bootloader_efr32.ewd"/>
+  <file name="MFT-bootloader_efr32.ewp" uri="studio:/project/MFT-bootloader_efr32.ewp"/>
+  <file name="MFT-bootloader_postbuild.sh" uri="studio:/project/MFT-bootloader_postbuild.sh"/>
+  <includePath uri="studio:/project/"/>
+  <includePath partCompatibility=".*efr32.*" languageCompatibility="c asm" uri="studio:/sdk//platform/Device/SiliconLabs/EFR32BG1B/Include/"/>
+  <includePath uri="studio:/sdk/platform/bootloader/."/>
+  <includePath uri="studio:/sdk/platform/emdrv/common/inc"/>
+  <includePath uri="studio:/sdk/platform/emlib/inc"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/configs"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/include"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/sl_crypto/include"/>
+  <macroDefinition name="EFR32BG1B232F256GM56"/>
+  <macroDefinition partCompatibility=".*efr32.*" languageCompatibility="c asm" name="EFR32BG1B232F256GM56" value="1"/>
+  <macroDefinition name="BOOTLOADER_VERSION_MAIN_CUSTOMER" value="(1)"/>
+  <macroDefinition name="BTL_CONFIG_FILE" value="&quot;bootloader-configuration.h&quot;"/>
+  <macroDefinition name="BTL_SLOT_CONFIGURATION" value="&quot;bootloader-slot-configuration.h&quot;"/>
+  <macroDefinition name="BOOTLOADER_SECOND_STAGE" value=""/>
+  <macroDefinition name="EM_MSC_RUN_FROM_FLASH" value=""/>
+  <macroDefinition name="__STARTUP_CLEAR_BSS" value=""/>
+  <macroDefinition name="__START" value="main"/>
+  <macroDefinition name="MBEDTLS_CONFIG_FILE" value="&quot;config-sl-crypto-all-acceleration.h&quot;"/>
+  <toolOption partCompatibility=".*efr32.*" toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.configSymbolDefs.v6.2.0" value=""/>
+  <toolOption partCompatibility=".*efr32.*" toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.icfFile.v5.4.0" value="${StudioSdkPath}/platform/bootloader//core/IAR/main_btl_main_flash.icf"/>
+  <toolOption toolchainCompatibility=".*gcc.*" toolId="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.exe" optionId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.script" value="C:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v1.1/platform/bootloader//core/GCC/main_btl_main_flash.ld"/>
+  <postbuildStep>sh &quot;C:\repos\MULTI-~1\MFT-BO~1/MFT-bootloader_postbuild.sh&quot; ${BuildArtifactFileBaseName}</postbuildStep>
+</project>
